@@ -1,0 +1,79 @@
+# Behavior Classifier Configuration
+
+# Model Settings
+models:
+  default_blip2: "Salesforce/blip2-opt-2.7b"
+  available_blip2:
+    - "Salesforce/blip2-opt-2.7b"
+    - "Salesforce/blip2-opt-6.7b"
+    - "Salesforce/blip2-flan-t5-xl"
+  grounding_dino: "IDEA-Research/grounding-dino-tiny"
+  zero_shot: "facebook/bart-large-mnli"
+
+# Detection Parameters
+detection:
+  default_threshold: 0.5
+  min_area_ratio: 0.001
+  min_resolution: 32
+  expansion_factor: 1.5
+  proximity_threshold: 0.3
+
+# Video Processing
+video:
+  default_target_fps: 1
+  default_output_fps: 5
+  supported_formats: [".mp4", ".avi", ".mov", ".mkv", ".webm"]
+
+# Image Processing  
+image:
+  supported_formats: [".jpg", ".jpeg", ".png", ".bmp", ".tiff"]
+
+# Behavior Classes
+behaviors:
+  classes:
+    - "walking"
+    - "running" 
+    - "biking"
+    - "dog walking"
+    - "scootering"
+    - "standing"
+    - "sitting"
+    - "stroller"
+  
+  # Mapping for zero-shot classification
+  label_mapping:
+    "biking": "riding a bicycle"
+    "dog walking": "walking a dog"
+    "scootering": "riding a scooter"
+    "stroller": "pushing a"
+
+# Output Settings
+output:
+  default_directory: "./outputs"
+  save_visualizations: true
+  save_debug_info: true
+  create_comprehensive_plots: true
+
+# Visualization Colors (BGR format for OpenCV)
+visualization:
+  colors:
+    original_box: [0, 0, 255]    # Red
+    expanded_box: [0, 255, 0]    # Green  
+    text_bg: [255, 255, 255]     # White
+    text_color: [0, 0, 0]        # Black
+
+# Caption Generation
+caption:
+  prompts:
+    - ""  # Unconditional
+    - "A person is"
+    - "The person on is X on the sidewalk. What is X?"
+  
+  generation_params:
+    max_length: 50
+    num_beams: 5
+    temperature: 1.0
+    top_p: 0.9
+    repetition_penalty: 1.2
+    do_sample: true
+    early_stopping: true
