@@ -5,9 +5,9 @@ import argparse
 from pathlib import Path
 from typing import Union, List, Dict
 
-from .models.blip2_classifier import BLIP2BehaviorClassifier
-from .utils.video_processing import VideoProcessor
-from .constants import (
+from models.blip2_classifier import BLIP2BehaviorClassifier
+from utils.video_processing import VideoProcessor
+from constants import (
     DEFAULT_BLIP2_MODEL, AVAILABLE_BLIP2_MODELS,
     DEFAULT_DETECTION_THRESHOLD, DEFAULT_TARGET_FPS,
     SUPPORTED_VIDEO_FORMATS, SUPPORTED_IMAGE_FORMATS
